@@ -1,0 +1,8 @@
+{
+    "Type": "WithdrewAmount",
+    "DateTime": "2021-01-09T10:11:23+000",
+    "AccountHolder": "Pascal Vree",
+    "AccountNumber": "NL66INGB0002123132",
+    "Amount": "2",
+    "Valuta": "EUR"
+}
