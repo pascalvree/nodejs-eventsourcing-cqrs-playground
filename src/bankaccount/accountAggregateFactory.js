@@ -8,5 +8,5 @@ const createdAccountEventHandler = require('./eventhandler/createdAccountEventHa
 const depositedAmountEventHandler = require('./eventhandler/depositedAmountEventHandler')(accountAggregateInstanceBuilder, accountAmountParser, accountAmountCalculator);
 const withdrewAmountEventHandler = require('./eventhandler/withdrewAmountEventHandler')(accountAggregateInstanceBuilder, accountAmountParser, accountAmountCalculator);
 
-const additionalEventHandlers = [depositedAmountEventHandler, withdrewAmountEventHandler];
-module.exports = repository => require('./accountAggregate')(repository, createdAccountEventHandler, additionalEventHandlers);
+const eventHandlers = [createdAccountEventHandler, depositedAmountEventHandler, withdrewAmountEventHandler];
+module.exports = repository => require('./accountAggregate')(repository, eventHandlers);

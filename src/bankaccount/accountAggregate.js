@@ -1,20 +1,25 @@
 'use strict';
 
-module.exports = (repository, createdAccountEventHandler, additionalEventHandlers) => {
-    return event => {
-        if (createdAccountEventHandler.isEventHandlerFor(event)) {
-            const aggregateRoot = createdAccountEventHandler.applyEvent(event);
-            repository.storeEntryUsingId(aggregateRoot, aggregateRoot.AccountNumber);
-        }
+class AccountAggregate {
 
-        additionalEventHandlers.forEach(additionalEventHandler => {
-            if (additionalEventHandler.isEventHandlerFor(event)) {
-                const aggregateRoot = repository.loadEntryUsingId(event.AccountNumber);
-                const updatedAggregateRoot = additionalEventHandler.applyEvent(event, aggregateRoot);
-                repository.storeEntryUsingId(updatedAggregateRoot, aggregateRoot.AccountNumber);
+    constructor(repository, eventHandlers) {
+        this.repository = repository;
+        this.eventHandlers = eventHandlers;
+    }
+
+    processEvent(event) {
+        const aggregateRoot = this.repository.loadEntryUsingId(event.AccountNumber);
+        const updatedAggregateRoot = this.eventHandlers.reduce((accumulator, eventHandler) => {
+            if (eventHandler.isEventHandlerFor(event)) {
+                return eventHandler.applyEvent(event, accumulator);
             }
-        });
 
-        return repository;
-    };
-};
+            return accumulator;
+        }, aggregateRoot);
+
+        this.repository.storeEntryUsingId(updatedAggregateRoot, updatedAggregateRoot.AccountNumber);
+        return true;
+    }
+}
+
+module.exports = (repository, eventHandlers) => new  AccountAggregate(repository, eventHandlers);
