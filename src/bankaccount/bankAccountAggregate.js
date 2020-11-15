@@ -1,6 +1,6 @@
 'use strict';
 
-class AccountAggregate {
+class BankAccountAggregate {
 
     constructor(repository, eventHandlers) {
         this.repository = repository;
@@ -17,9 +17,12 @@ class AccountAggregate {
             return accumulator;
         }, aggregateRoot);
 
-        this.repository.storeEntryUsingId(updatedAggregateRoot, updatedAggregateRoot.AccountNumber);
+        if (updatedAggregateRoot !== null) {
+            this.repository.storeEntryUsingId(updatedAggregateRoot, updatedAggregateRoot.AccountNumber);
+        }
+
         return true;
     }
 }
 
-module.exports = (repository, eventHandlers) => new  AccountAggregate(repository, eventHandlers);
+module.exports = (repository, eventHandlers) => new  BankAccountAggregate(repository, eventHandlers);

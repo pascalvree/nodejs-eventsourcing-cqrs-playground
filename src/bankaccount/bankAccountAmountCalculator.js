@@ -1,6 +1,6 @@
 'use strict';
 
-class AccountAmountCalculator {
+class BankAccountAmountCalculator {
 
     constructor() {
         this.result = null;
@@ -26,4 +26,4 @@ class AccountAmountCalculator {
     }
 }
 
-module.exports = () => new AccountAmountCalculator();
+module.exports = () => new BankAccountAmountCalculator();

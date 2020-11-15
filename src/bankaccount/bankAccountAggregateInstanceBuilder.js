@@ -1,6 +1,6 @@
 'use strict';
 
-class AccountAggregateInstanceBuilder {
+class BankAccountAggregateInstanceBuilder {
     constructor() {
         this.result = null;
     }
@@ -47,4 +47,4 @@ class AccountAggregateInstanceBuilder {
     }
 }
 
-module.exports = () => new AccountAggregateInstanceBuilder();
+module.exports = () => new BankAccountAggregateInstanceBuilder();
