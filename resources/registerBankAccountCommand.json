@@ -1,0 +1,8 @@
+{
+  "Type": "RegisterBankAccount",
+  "DateTime": "2020-10-01T10:46:57+000",
+  "AccountHolder": "Jane Lane (Joan)",
+  "AccountNumber": "NL66INGB0002123132",
+  "Amount": "10",
+  "Valuta": "EUR"
+}

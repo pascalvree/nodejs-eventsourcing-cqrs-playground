@@ -1,27 +1,27 @@
 'use strict';
 
-class CreatedBankAccountEventHandler {
+class RegisterBankAccountCommandHandler {
 
     constructor(accountAggregateInstanceBuilder, accountAmountParser) {
         this.accountAggregateInstanceBuilder = accountAggregateInstanceBuilder;
         this.accountAmountParser = accountAmountParser;
     }
 
-    isEventHandlerFor(event) {
-        return event.Type === 'CreatedBankAccount';
+    isEventHandlerFor(command) {
+        return command.Type === "RegisterBankAccount";
     }
 
-    applyEvent(event, aggregateRoot) {
-        if (this.isEventHandlerFor(event)) {
+    applyEvent(command, aggregateRoot) {
+        if (this.isEventHandlerFor(command)) {
             if (aggregateRoot === null) { // there is no known registration of this BankAccount yet ... create initial state
                 return this.accountAggregateInstanceBuilder.createEmptyInstance()
-                    .withAccountNumber(event.AccountNumber)
-                    .withAccountHolder(event.AccountHolder)
-                    .withAmount(this.accountAmountParser.parseAmount(event.Amount))
-                    .withValuta(event.Valuta)
-                    .withEvents([event])
+                    .withAccountNumber(command.AccountNumber)
+                    .withAccountHolder(command.AccountHolder)
+                    .withAmount(this.accountAmountParser.parseAmount(command.Amount))
+                    .withValuta(command.Valuta)
+                    .withEvents([command])
                     .getInstance();
-            } else {  // there is a known registration of this BankAccount yet ... add event, dont update any other State
+            } else {  // there is already a registration of this BankAccount ... add command, dont update any other State
                 return this.accountAggregateInstanceBuilder.createEmptyInstance()
                     .withAccountNumber(aggregateRoot.AccountNumber)
                     .withAccountHolder(aggregateRoot.AccountHolder)
@@ -29,12 +29,9 @@ class CreatedBankAccountEventHandler {
                     .withValuta(aggregateRoot.Valuta)
                     .withEvents(aggregateRoot.Events.concat([event]))
                     .getInstance();
-
             }
         }
-
-        return null;
     }
 }
 
-module.exports = (accountAggregateInstanceBuilder, accountAmountParser) => new CreatedBankAccountEventHandler(accountAggregateInstanceBuilder, accountAmountParser);
+module.exports = (accountAggregateInstanceBuilder, accountAmountParser) => new RegisterBankAccountCommandHandler(accountAggregateInstanceBuilder, accountAmountParser);

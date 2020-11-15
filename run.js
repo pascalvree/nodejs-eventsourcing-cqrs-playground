@@ -1,6 +1,7 @@
 'use strict';
 
 const events = [
+    require('./resources/registerBankAccountCommand.json'),
     require('./resources/createdBankAccountEvent.json'),
     require('./resources/withdrewAmountEvent.json'),
     require('./resources/depositedAmountEvent-2.json'),
