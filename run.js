@@ -2,7 +2,7 @@
 
 const events = [
     require('./resources/createdBankAccountEvent.json'),
-    require('./resources/withdrewAmountEvent-3.json'),
+    require('./resources/withdrewAmountEvent.json'),
     require('./resources/depositedAmountEvent-2.json'),
     require('./resources/createdBankAccountEvent.json'),
     require('./resources/depositedAmountEvent-1.json')
