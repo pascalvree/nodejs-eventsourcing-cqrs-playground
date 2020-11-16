@@ -1,0 +1,25 @@
+{
+  "name": "nodejs-eventsourcing-cqrs-playground",
+  "version": "0.0.1",
+  "description": "a playground codebase to tinker and learn about cqrs, eventsourcing and more",
+  "main": "src/bankaccount/bankaccount.component.test.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "collectCoverage": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pascalvree/nodejs-eventsourcing-cqrs-playground.git"
+  },
+  "author": "Vree, P. <pascal.vree@rogare.org>",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/pascalvree/nodejs-eventsourcing-cqrs-playground/issues"
+  },
+  "homepage": "https://github.com/pascalvree/nodejs-eventsourcing-cqrs-playground#readme",
+  "dependencies": {
+    "jest": "^26.6.3"
+  }
+}
