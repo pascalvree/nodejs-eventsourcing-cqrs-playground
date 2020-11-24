@@ -1,6 +1,6 @@
 'use strict';
 
-class DepositedAmountEventHandler {
+class AmountDepositedEventHandler {
 
     constructor(accountAggregateInstanceBuilder, accountAmountParser, accountAmountCalculator) {
         this.accountAggregateInstanceBuilder = accountAggregateInstanceBuilder;
@@ -9,7 +9,7 @@ class DepositedAmountEventHandler {
     }
 
     isEventHandlerFor(event) {
-        return event.Type === "DepositedAmount";
+        return event.Type === "amountDeposited";
     }
 
     applyEvent(event, aggregateRoot) {
@@ -33,4 +33,4 @@ class DepositedAmountEventHandler {
 
 }
 
-module.exports = (accountAggregateInstanceBuilder, accountAmountParser, accountAmountCalculator) => new DepositedAmountEventHandler(accountAggregateInstanceBuilder, accountAmountParser, accountAmountCalculator);
+module.exports = (accountAggregateInstanceBuilder, accountAmountParser, accountAmountCalculator) => new AmountDepositedEventHandler(accountAggregateInstanceBuilder, accountAmountParser, accountAmountCalculator);

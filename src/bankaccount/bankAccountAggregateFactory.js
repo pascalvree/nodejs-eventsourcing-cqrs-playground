@@ -5,9 +5,9 @@ const bankAccountAmountCalculator = require('./bankAccountAmountCalculator')();
 const bankAccountAggregateInstanceBuilder = require('./bankAccountAggregateInstanceBuilder')();
 
 const registerBankAccountCommandHandler = require('./commandHandler/registerBankAccountCommandHandler')(bankAccountAggregateInstanceBuilder, bankAccountAmountParser, bankAccountAmountCalculator);
-const bankAccountRegisteredEventHandler = require('./eventhandler/BankAccountRegisteredEventHandler')(bankAccountAggregateInstanceBuilder, bankAccountAmountParser, bankAccountAmountCalculator);
-const depositedAmountEventHandler = require('./eventhandler/depositedAmountEventHandler')(bankAccountAggregateInstanceBuilder, bankAccountAmountParser, bankAccountAmountCalculator);
-const withdrewAmountEventHandler = require('./eventhandler/withdrewAmountEventHandler')(bankAccountAggregateInstanceBuilder, bankAccountAmountParser, bankAccountAmountCalculator);
+const bankAccountRegisteredEventHandler = require('./eventhandler/bankAccountRegisteredEventHandler')(bankAccountAggregateInstanceBuilder, bankAccountAmountParser, bankAccountAmountCalculator);
+const amountDepositedEventHandler = require('./eventhandler/amountDepositedEventHandler')(bankAccountAggregateInstanceBuilder, bankAccountAmountParser, bankAccountAmountCalculator);
+const amountWitdrawnEventHandler = require('./eventhandler/amountWithdrawnEventHandler')(bankAccountAggregateInstanceBuilder, bankAccountAmountParser, bankAccountAmountCalculator);
 
-const eventHandlers = [registerBankAccountCommandHandler, bankAccountRegisteredEventHandler, depositedAmountEventHandler, withdrewAmountEventHandler];
+const eventHandlers = [registerBankAccountCommandHandler, bankAccountRegisteredEventHandler, amountDepositedEventHandler, amountWitdrawnEventHandler];
 module.exports = repository => require('./bankAccountAggregate')(repository, eventHandlers);

@@ -6,10 +6,10 @@ describe("bankaccount", () => {
         const events = [
             require('../../resources/registerBankAccountCommand.json'),
             require('../../resources/bankAccountRegisteredEvent.json'),
-            require('../../resources/withdrewAmountEvent.json'),
-            require('../../resources/depositedAmountEvent-2.json'),
+            require('../../resources/amountWithdrawnEvent.json'),
+            require('../../resources/amountDepositedEvent-2.json'),
             require('../../resources/bankAccountRegisteredEvent.json'),
-            require('../../resources/depositedAmountEvent-1.json')
+            require('../../resources/amountDepositedEvent-1.json')
         ];
 
         const repository = require('../repository')();
