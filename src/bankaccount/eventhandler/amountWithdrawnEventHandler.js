@@ -2,18 +2,19 @@
 
 class AmountWithdrawnEventHandler {
 
-    constructor(accountAggregateInstanceBuilder, accountAmountParser, accountAmountCalculator) {
+    constructor(accountAggregateInstanceBuilder, accountAmountParser, accountAmountCalculator, emitter) {
         this.accountAggregateInstanceBuilder = accountAggregateInstanceBuilder;
         this.accountAmountParser = accountAmountParser;
         this.accountAmountCalculator = accountAmountCalculator;
+        this.emitter = emitter;
     }
 
-    isEventHandlerFor(event) {
+    isHandlerFor(event) {
         return event.Type === "amountWithdrawn";
     }
 
     applyEvent(event, aggregateRoot) {
-        if (this.isEventHandlerFor(event)) {
+        if (this.isHandlerFor(event)) {
             const calculatedAmount = this.accountAmountCalculator
                 .withInitialValue(this.accountAmountParser.parseAmount(aggregateRoot.Amount))
                 .subtract(this.accountAmountParser.parseAmount(event.Amount))
@@ -33,4 +34,4 @@ class AmountWithdrawnEventHandler {
 
 }
 
-module.exports = (accountAggregateInstanceBuilder, accountAmountParser, accountAmountCalculator) => new AmountWithdrawnEventHandler(accountAggregateInstanceBuilder, accountAmountParser, accountAmountCalculator);
+module.exports = (accountAggregateInstanceBuilder, accountAmountParser, accountAmountCalculator, emitter) => new AmountWithdrawnEventHandler(accountAggregateInstanceBuilder, accountAmountParser, accountAmountCalculator, emitter);

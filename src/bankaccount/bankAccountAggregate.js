@@ -2,16 +2,16 @@
 
 class BankAccountAggregate {
 
-    constructor(repository, eventHandlers) {
+    constructor(repository, handlers) {
         this.repository = repository;
-        this.eventHandlers = eventHandlers;
+        this.handlers = handlers;
     }
 
     processEvent(event) {
         const aggregateRoot = this.repository.loadEntryUsingId(event.AccountNumber);
-        const updatedAggregateRoot = this.eventHandlers.reduce((accumulator, eventHandler) => {
-            if (eventHandler.isEventHandlerFor(event)) {
-                return eventHandler.applyEvent(event, accumulator);
+        const updatedAggregateRoot = this.handlers.reduce((accumulator, handler) => {
+            if (handler.isHandlerFor(event)) {
+                return handler.applyEvent(event, accumulator);
             }
 
             return accumulator;
@@ -25,4 +25,4 @@ class BankAccountAggregate {
     }
 }
 
-module.exports = (repository, eventHandlers) => new  BankAccountAggregate(repository, eventHandlers);
+module.exports = (repository, handlers) => new BankAccountAggregate(repository, handlers);

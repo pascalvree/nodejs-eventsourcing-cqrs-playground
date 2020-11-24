@@ -2,17 +2,18 @@
 
 class BankAccountRegisteredEventHandler {
 
-    constructor(accountAggregateInstanceBuilder, accountAmountParser) {
+    constructor(accountAggregateInstanceBuilder, accountAmountParser, emitter) {
         this.accountAggregateInstanceBuilder = accountAggregateInstanceBuilder;
         this.accountAmountParser = accountAmountParser;
+        this.emitter = emitter;
     }
 
-    isEventHandlerFor(event) {
+    isHandlerFor(event) {
         return event.Type === 'bankAccountRegistered';
     }
 
     applyEvent(event, aggregateRoot) {
-        if (this.isEventHandlerFor(event)) {
+        if (this.isHandlerFor(event)) {
             if (aggregateRoot === null) { // there is no known registration of this BankAccount yet ... create initial state
                 return this.accountAggregateInstanceBuilder.createEmptyInstance()
                     .withAccountNumber(event.AccountNumber)
@@ -37,4 +38,4 @@ class BankAccountRegisteredEventHandler {
     }
 }
 
-module.exports = (accountAggregateInstanceBuilder, accountAmountParser) => new BankAccountRegisteredEventHandler(accountAggregateInstanceBuilder, accountAmountParser);
+module.exports = (accountAggregateInstanceBuilder, accountAmountParser, emitter) => new BankAccountRegisteredEventHandler(accountAggregateInstanceBuilder, accountAmountParser, emitter);
