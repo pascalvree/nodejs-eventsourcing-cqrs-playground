@@ -17,13 +17,14 @@ class RegisterBankAccountCommandHandler {
     applyEvent(command, aggregateRoot) {
         if (this.isHandlerFor(command)) {
             if (aggregateRoot === null) { // there is no known registration of this BankAccount yet ... create initial state
-                const currentState = this.accountAggregateInstanceBuilder.createEmptyInstance()
+                const currentState = this.accountAggregateInstanceBuilder
+                    .initialize()
                     .withAccountNumber(command.AccountNumber)
                     .withAccountHolder(command.AccountHolder)
                     .withAmount(command.Amount)
                     .withValuta(command.Valuta)
                     .withEvents([command])
-                    .getInstance();
+                    .getResult();
 
                 const emittableEvent = this.bankAccountRegisteredEventBuilder
                     .initialize()
@@ -35,13 +36,14 @@ class RegisterBankAccountCommandHandler {
 
                 return currentState;
             } else {  // there is already a registration of this BankAccount ... add command, dont update any other State
-                return this.accountAggregateInstanceBuilder.createEmptyInstance()
+                return this.accountAggregateInstanceBuilder
+                    .initialize()
                     .withAccountNumber(aggregateRoot.AccountNumber)
                     .withAccountHolder(aggregateRoot.AccountHolder)
                     .withAmount(aggregateRoot.Amount)
                     .withValuta(aggregateRoot.Valuta)
                     .withEvents(aggregateRoot.Events.concat([command]))
-                    .getInstance();
+                    .getResult();
             }
         }
     }

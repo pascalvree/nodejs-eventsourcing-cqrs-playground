@@ -5,7 +5,7 @@ class BankAccountAggregateInstanceBuilder {
         this.result = null;
     }
 
-    createEmptyInstance() {
+    initialize() {
         this.result = {
             "AccountHolder": "",
             "AccountNumber": "",
@@ -42,7 +42,7 @@ class BankAccountAggregateInstanceBuilder {
         return this;
     }
 
-    getInstance() {
+    getResult() {
         return this.result;
     }
 }

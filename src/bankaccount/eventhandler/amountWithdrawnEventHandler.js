@@ -20,13 +20,14 @@ class AmountWithdrawnEventHandler {
                 .subtract(this.accountAmountParser.parseAmount(event.Amount))
                 .getResult();
 
-            return this.accountAggregateInstanceBuilder.createEmptyInstance()
+            return this.accountAggregateInstanceBuilder
+                .initialize()
                 .withAccountNumber(aggregateRoot.AccountNumber)
                 .withAccountHolder(aggregateRoot.AccountHolder)
                 .withAmount(calculatedAmount)
                 .withValuta(aggregateRoot.Valuta)
                 .withEvents(aggregateRoot.Events.concat(event))
-                .getInstance();
+                .getResult();
         }
 
         return aggregateRoot;
