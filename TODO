@@ -1,6 +1,8 @@
 === To do ===
-- consider naming scheme for events and commands (create bankaccount, created bankaccount or bankaccount created)
 - consider and add an example of creation versus registration
 - implement a simple projection and make aggregate emit events
 - sketch software architecture outline, building blocks and ...
 - ...
+
+=== Done ===
+20201124 - consider naming scheme for events and commands (create bankaccount, created bankaccount or bankaccount created)
