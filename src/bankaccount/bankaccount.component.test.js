@@ -5,10 +5,10 @@ describe("bankaccount", () => {
     it('Expect bankaccount.Amount to be 43', () => {
         const events = [
             require('../../resources/registerBankAccountCommand.json'),
-            require('../../resources/createdBankAccountEvent.json'),
+            require('../../resources/bankAccountRegisteredEvent.json'),
             require('../../resources/withdrewAmountEvent.json'),
             require('../../resources/depositedAmountEvent-2.json'),
-            require('../../resources/createdBankAccountEvent.json'),
+            require('../../resources/bankAccountRegisteredEvent.json'),
             require('../../resources/depositedAmountEvent-1.json')
         ];
 
