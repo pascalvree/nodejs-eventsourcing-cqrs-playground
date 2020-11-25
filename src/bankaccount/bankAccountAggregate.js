@@ -1,6 +1,6 @@
 'use strict';
 
-class BankAccountAggregate {
+class bankAccountAggregate {
 
     constructor(repository, handlers) {
         this.repository = repository;
@@ -9,20 +9,14 @@ class BankAccountAggregate {
 
     processEvent(event) {
         const aggregateRoot = this.repository.loadEntryUsingId(event.AccountNumber);
-        const updatedAggregateRoot = this.handlers.reduce((accumulator, handler) => {
-            if (handler.isHandlerFor(event)) {
-                return handler.applyEvent(event, accumulator);
-            }
-
-            return accumulator;
-        }, aggregateRoot);
+        const updatedAggregateRoot = this.handlers.executeHandlerIfIsHandlerFor(event, aggregateRoot);
 
         if (updatedAggregateRoot !== null) {
-            this.repository.storeEntryUsingId(updatedAggregateRoot, updatedAggregateRoot.AccountNumber);
+            this.repository.replaceOrCreateEntryUsing(updatedAggregateRoot, updatedAggregateRoot.AccountNumber);
         }
 
         return true;
     }
 }
 
-module.exports = (repository, handlers) => new BankAccountAggregate(repository, handlers);
+module.exports = (repository, handlers) => new bankAccountAggregate(repository, handlers);

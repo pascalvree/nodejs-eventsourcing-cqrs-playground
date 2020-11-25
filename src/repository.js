@@ -9,7 +9,7 @@ const repository = {
 
         return null;
     },
-    storeEntryUsingId: (aggregateRoot, id) => {
+    replaceOrCreateEntryUsing: (aggregateRoot, id) => {
         volatileInProcessInMemoryStore[id] = aggregateRoot;
     }
 };
