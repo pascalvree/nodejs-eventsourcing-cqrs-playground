@@ -3,8 +3,13 @@
 - implement a simple projection
 - sketch software architecture outline, building blocks and ...
 - push travis configuration to environment settings on github (exclude from codebase)
-- introduce snyk, license checking checks during build
+- introduce mutation testing proof of concept using stryker
+- look into publishing, tracking performance stats per test
+- look into publishing, tracking test execution statistics
 - ...
+
+=== In Progress ===
+- introduce snyk, license checking checks during build
 
 === Done ===
 20201202 - initial configuration of code style checking / lint checks during ci/cd
