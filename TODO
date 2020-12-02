@@ -6,6 +6,7 @@
 - introduce mutation testing proof of concept using stryker
 - look into publishing, tracking performance stats per test
 - look into publishing, tracking test execution statistics
+- look into adopting github actions
 - ...
 
 === In Progress ===
