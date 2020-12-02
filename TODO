@@ -3,10 +3,11 @@
 - implement a simple projection
 - sketch software architecture outline, building blocks and ...
 - push travis configuration to environment settings on github (exclude from codebase)
-- introduce snyk, license checking and code formatting checks on pre-check-in and during build
+- introduce snyk, license checking checks during build
 - ...
 
 === Done ===
+20201202 - initial configuration of code style checking / lint checks during ci/cd
 20201202 - partial proof of concept for property-based testing
 20201124 - partial implementation for emitting events from aggregate
 20201124 - consider naming scheme for events and commands (create bankaccount, created bankaccount or bankaccount created)
