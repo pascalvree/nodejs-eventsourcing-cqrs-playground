@@ -1,4 +1,6 @@
 === To do ===
+- load sonarqube, snyk, travis tokens from environment settings
+- regenerate sonarqube, snyk, travis tokens
 - consider and add an example of creation versus registration
 - implement a simple projection
 - sketch software architecture outline, building blocks and ...
