@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/pascalvree/nodejs-eventsourcing-cqrs-playground#readme",
   "dependencies": {
+    "coveralls": "^3.1.0",
     "jest": "^26.6.3"
   }
 }
