@@ -1,21 +1,22 @@
 === To do ===
-- load sonarqube, snyk, travis tokens from environment settings
-- regenerate sonarqube, snyk, travis tokens
-- consider and add an example of creation versus registration
 - implement a simple projection
+- consider and add an example of creation versus registration
 - sketch software architecture outline, building blocks and ...
-- push travis configuration to environment settings on github (exclude from codebase)
 - introduce mutation testing proof of concept using stryker
-- look into chaos engineering and try a proof of concept
-- look into publishing, tracking performance stats per test
+- look into publishing, tracking runtime performance / profiling stats per test
 - look into publishing, tracking test execution statistics
+- look into chaos engineering and try a proof of concept
+- look into adopting a language server
 - look into adopting github actions
 - ...
 
 === In Progress ===
-- introduce snyk, license checking checks during build
+- none
 
 === Done ===
+20201207 - introduce snyk, license checking checks during build
+20201207 - regenerate sonarqube, snyk, travis tokens
+20201207 - load sonarqube, snyk, travis tokens from environment settings
 20201202 - initial configuration of code style checking / lint checks during ci/cd
 20201202 - partial proof of concept for property-based testing
 20201124 - partial implementation for emitting events from aggregate
