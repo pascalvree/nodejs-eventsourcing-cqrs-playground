@@ -8,9 +8,9 @@ install:
 script:
   - ./node_modules/.bin/license-checker --onlyAllow 'LGPL-3.0;0BSD;MIT;Apache-2.0;ISC;BSD-3-Clause;BSD-2-Clause;AFLv2.1;AGPL-3.0;CC-BY-3.0;CC0-1.0;Unlicense'
   - npm audit
-  - snyk test
+  - ./node_modules/.bin/snyk test
   - ./node_modules/.bin/eslint ./src/
-  - ./node_modules/.bin/sonar-scanner -X
+  - ./node_modules/.bin/sonar-scanner -X -Dsonar.login=$SONAR_LOGIN -Dsonar.host.url=$SONAR_HOST -Dsonar.organization=$SONAR_ORGANISATION -Dsonar.projectKey=$SONAR_PROJECT_KEY -Dsonar.sources=$SONAR_SOURCES
   - npm test
-  - coveralls < coverage/lcov.info
-  - snyk monitor
+  - ./node_modules/.bin/coveralls < coverage/lcov.info
+  - ./node_modules/.bin/snyk monitor
