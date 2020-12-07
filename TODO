@@ -6,6 +6,7 @@
 - sketch software architecture outline, building blocks and ...
 - push travis configuration to environment settings on github (exclude from codebase)
 - introduce mutation testing proof of concept using stryker
+- look into chaos engineering and try a proof of concept
 - look into publishing, tracking performance stats per test
 - look into publishing, tracking test execution statistics
 - look into adopting github actions
